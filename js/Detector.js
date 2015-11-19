@@ -36,7 +36,7 @@ var Detector = {
 		element.style.width = '400px';
 		element.style.margin = '5em auto 0';
 
-		if ( ! this.webgl ) {
+    if ( ! this.webgl ) {
 
 			element.innerHTML = window.WebGLRenderingContext ? [
 				'Your graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br />',
@@ -47,3 +47,32 @@ var Detector = {
 			].join( '\n' );
 
 		}
+
+		return element;
+
+	},
+
+	addGetWebGLMessage: function ( parameters ) {
+
+		var parent, id, element;
+
+		parameters = parameters || {};
+
+		parent = parameters.parent !== undefined ? parameters.parent : document.body;
+		id = parameters.id !== undefined ? parameters.id : 'oldie';
+
+		element = Detector.getWebGLErrorMessage();
+		element.id = id;
+
+		parent.appendChild( element );
+
+	}
+
+};
+
+// browserify support
+if ( typeof module === 'object' ) {
+
+	module.exports = Detector;
+
+}
