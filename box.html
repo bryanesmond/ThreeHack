@@ -38,6 +38,11 @@
 				mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
 
+				var geometry2 = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
+				var material2 = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+				var torusKnot = new THREE.Mesh( geometry, material );
+				scene.add( torusKnot );
+
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
